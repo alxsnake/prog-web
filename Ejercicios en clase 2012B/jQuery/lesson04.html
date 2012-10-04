@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>jQuery Events</title>
+	<link rel="stylesheet" href="day.css">
+</head>
+<body> 
+
+<h1>My Website</h1>
+
+<!--
+<button>Day</button>
+<button>Night</button>
+-->
+
+<!-- botones con atributos personalizados -->
+<button data-file="day">Day</button>
+<button data-file="night">Night</button>
+
+<script src="jquery-1.7.2.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+
+
+<script>
+
+//We create a function to use variables only in that spec, y la ejecutamos inmediatamente, por eso los parentesis.
+(function() {
+	var link = $('link');
+	$('button').on('click',function(){
+	//$('button').click(function(){
+		//console.log('Button was clicked');
+		
+		//esto nos devolverá el elemento al que se dio clic, pero no como un elemento de jquery
+		//console.log(this);
+		
+		//de esta manera el elemento ya es de jquery y puedo realizar todas las tareas que ya se que puedo hacer
+		//console.log($(this)); 
+		
+		//cambio el texto del elemento, es importante notar que this se accede desde jquery
+		//$(this).text('changed');
+		
+		//Cambiamos el atributo del link rel
+		//$('link').attr('href','night.css');
+		
+		//obtenemos el texto del botón para cargar el css
+		//var stylesheet = $(this).text().toLowerCase ();
+		//$('link').attr('href', stylesheet + '.css');
+		
+		//utilizando atributos personalizados
+		//var stylesheet = $(this).attr('data-file');
+		//var stylesheet = $(this).data('file');
+		//$('link').attr('href', stylesheet + '.css');
+		
+		//Para no brincar al dom todo el tiempo
+		//verificamos si el boton al dar click es el mismo css que esta cargado
+		
+		//declarando varias variables separadas por comas
+		var $this = $(this),
+			stylesheet = $(this).data('file');
+		
+		link.attr('href', stylesheet + '.css');
+		
+		//a los hermanos quitamos el atributo de deshabilitado y a this le agregamos el de deshabilitado
+		$this
+			.siblings('button')
+			.removeAttr('disabled')
+			.end()
+			.attr('disabled','disabled'); 
+		
+		
+	} );
+	  
+
+	/*
+	var link = $('link');
+	
+	$('button').on('click', function() {
+		var $this = $(this),
+			stylesheet = $this.data('file');
+
+		link.attr('href', stylesheet + '.css');
+
+		$this
+			.siblings('button')
+				.removeAttr('disabled')
+				.end()
+			.attr('disabled', 'disabled');
+	});*/
+})();
+
+</script>
+
+
+
+</body>
+</html>
