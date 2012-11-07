@@ -1,0 +1,6 @@
+create table usuario(
+	idusuario int primary key auto_increment,
+	nick varchar(25),
+	password varchar(150),
+	email varchar(150)
+)engine=innodb character set=utf8 collate=utf8_spanish_ci;
