@@ -1,43 +1,4 @@
 <?php
-/**
- * @return array $datos
- * @param int $tipo numero que indica el privilegio
- * Esta función busca los usuarios en base a sus privilegios
- */
-function listarUsuariosPorTipo($tipo){
-	//Conectarse a la base de datos
-	require_once("bd.inc");
-	$con = new mysqli($dbhost, $dbuser, $dbpass, $db);
-	
-	//Validar que no genere error la conexión
-	if($con -> connect_error)
-		die("Por el momento no se puede acceder al gestor de la base de datos");
-
-	//Creo la consulta
-	$mi_query = "select idusuario, nick 
-				 from usuario
-				 where tipo=$tipo";
-
-	//Ejecuto mi consulta
-	$result = $con -> query($mi_query);
-
-	//Validar que no genere error la conexión
-	if($con -> errno)
-		die("La consulta no se pudo ejecutar");
-
-	//Cierro la conexión
-	$con -> close();
-
-	//Convierto el resultado de mi consulta a una matriz
-	if($result -> num_rows >= 1){
-		//Por cada fila obtengo un arreglo
-		while($fila = $result -> fetch_assoc())
-			$datos[] = $fila;
-	}
-	
-	//Regreso la matriz
-	return $datos;
-}
 
 /**
  * @return array $datos
@@ -72,9 +33,6 @@ function listarUsuarios(){
 	//Regreso la matriz
 	return $datos;
 }
-
-
-
 
 /**
  * @param int $id del usuario
