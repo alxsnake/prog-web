@@ -35,19 +35,23 @@
 		die('No se pudo realizar la consulta');
 
 	//Si obtuve un único resultado lo convierto en arreglo
-	if($resultado -> num_rows == 1)
+	if($resultado -> num_rows == 1){
 		$usuario = $resultado -> fetch_assoc();
+		
+		//Crea o carga una sesión
+		session_start();
+
+		//Creo mi variable para definir sesión
+		$_SESSION['idusuario']=$usuario['idusuario'];
+		$_SESSION['usuario']=$usuario['nick'];
+		$_SESSION['hrainicio']=time();
+		$_SESSION['ultimoacceso']=time();
+
+		header('Location: ../index.php');
+	}
 	else
 		header('Location: '.$_SERVER["HTTP_REFERER"].'?status=1');
 
-	//Crea o carga una sesión
-	session_start();
-
-	//Creo mi variable para definir sesión
-	$_SESSION['idusuario']=$usuario['idusuario'];
-	$_SESSION['usuario']=$usuario['nick'];
-	$_SESSION['hrainicio']=time();
-
-	header('Location: ../index.php');
+	
 
 ?>

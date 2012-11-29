@@ -4,7 +4,7 @@
         <meta name="description" content="Creacion de Usuario" />
 	<meta name="author" content="usuario" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
-	<title>Creación de Usuario</title>
+	<title>Iniciar sesión</title>
 	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
   	<script type="text/javascript" src="js/validacion.js"></script>
     </head>

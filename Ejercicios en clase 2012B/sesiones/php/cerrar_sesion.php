@@ -1,6 +1,7 @@
 <?php
 	//Cargo la sesion actual
 	session_start();
+
 	//Limpio la sesion
 	session_unset();
 	//Destruyo la sesion
